@@ -52,5 +52,17 @@
     $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
 
     $('.header-menu-nav-folder-content').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
+
+    /* Change nav button text*/
+    var joinButtonNav = $('.header-display-desktop a[href="https://www.meetup.com/tokyovegan/"]');
+    var joinButtonMobile = $('.header-menu-cta a[href="https://www.meetup.com/tokyovegan/"]');
+
+    if (lang === 'jp') {
+      joinButtonNav.text('参加する');
+      joinButtonMobile.text('参加する');
+    } else {
+      joinButtonNav.text('JOIN US!');
+      joinButtonMobile.text('JOIN US!');
+    }
   });
 </script>
