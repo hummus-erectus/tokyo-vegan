@@ -1,13 +1,8 @@
 /* Transparent Background Colour */
-#block-7123784606e377857663, #block-79967c176ba5d77cd249 {
-    background: rgba(0,125,102, 0.5);
-    padding-top: 1vw;
-}
-
-#block-c75f22b8f9c5a4b15a86, #block-561bf55778203d44a452, #block-8582929a3a38717c3757, #block-f8370543ef958d8be6e7, #block-944c09014b854d9fc46d, #block-3b33f184348212db2b3e, #block-d856ca1032b3cc578894, #block-869a76810bdef3b5872a, #block-4a7ee05d3a640e55dc1f, #block-e2b2a0072e8e4342fe2f, #block-41490de808cbb3494668 {
+#block-7123784606e377857663, #block-79967c176ba5d77cd249 #block-c75f22b8f9c5a4b15a86, #block-561bf55778203d44a452, #block-8582929a3a38717c3757, #block-f8370543ef958d8be6e7, #block-944c09014b854d9fc46d, #block-3b33f184348212db2b3e, #block-d856ca1032b3cc578894, #block-869a76810bdef3b5872a, #block-4a7ee05d3a640e55dc1f, #block-e2b2a0072e8e4342fe2f, #block-41490de808cbb3494668 {
   background: rgba(0,125,102, 0.5);
+  padding-top: 1vw;
 }
-
 
 /*setup language switcher*/
 .language {
