@@ -1,8 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-  $(function() {
+    $(function() {
     /* SETUP MULTI-LANGUAGE */
-    var defaultLanguage = 'en';
+    var defaultLanguage = 'jp';
     var lang = location.pathname.split("/")[1];
     var defaultClass = 'lang-'+defaultLanguage+'';
     var itemParent = "nav [class*='collection'],nav [class*='folder'],nav [class*='index'],nav [class*='group']";
@@ -25,44 +25,43 @@
         $(this).addClass(multiLanguageClass);
     });
 
-    /* HOMEPAGE-LOGO LINKS TO PROPER LANGUAGE HOMEPAGE */
-    if (lang == "jp") {
-      $('a[href="/"]').attr("href", "/jp/home/");
-    }
+  /* HOMEPAGE-LOGO LINKS TO PROPER LANGUAGE HOMEPAGE */
+  if (lang == "en") {
+    $('a[href="/"]').attr("href", "/en/home/");
+  }
 
-    /* ADD EXCLUSION NAV ITEMS */
-    $('.exclude-me,.exclude-me a').addClass('exclude');
-    $('.sqs-svg-icon--list a,.SocialLinks-link,.header-menu-controls-control').addClass('exclude');
+  /* ADD EXCLUSION NAV ITEMS */
+  $('.exclude-me,.exclude-me a').addClass('exclude');
+  $('.sqs-svg-icon--list a,.SocialLinks-link,.header-menu-controls-control').addClass('exclude');
 
-    /* REMOVE OTHER LANGUAGES AND KEEP EXCLUDED ITEMS */
-    $('.multilanguage:not(".lang-'+lang+',.exclude")').remove();
+  /* REMOVE OTHER LANGUAGES AND KEEP EXCLUDED ITEMS */
+  $('.multilanguage:not(".lang-'+lang+',.exclude")').remove();
 
-    /* Setup language switcher */
+  /* Setup language switcher */
+  /*var switcherText = lang === 'en' ? 'JP' : 'EN';
+  var currentURL = window.location.pathname;
+  var switcherHref = currentURL.replace('/' + lang + '/', '/' + switcherText.toLowerCase() + '/');
 
-    /*var switcherText = lang === 'jp' ? 'EN' : 'JP';
-    var currentURL = window.location.pathname;
-    var switcherHref = currentURL.replace('/' + lang + '/', '/' + switcherText.toLowerCase() + '/');
+  $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
+});*/
+var switcherText = lang === 'en' ? 'JP' : 'EN';
+  var switcherHref = lang === 'en' ? '/jp/home' : '/en/home/';
 
-    $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
-    });*/
+  $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
 
-    var switcherText = lang === 'jp' ? 'EN' : 'JP';
-    var switcherHref = lang === 'jp' ? '/en/home' : '/jp/home/';
+  $('.header-menu-nav-folder-content').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
 
-    $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
+  /* Change nav button text*/
+  var joinButtonNav = $('.header-display-desktop a[href="https://www.meetup.com/tokyovegan/"]');
+  var joinButtonMobile = $('.header-menu-cta a[href="https://www.meetup.com/tokyovegan/"]');
 
-    $('.header-menu-nav-folder-content').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
+  if (lang === 'jp') {
+    joinButtonNav.text('参加する');
+    joinButtonMobile.text('参加する');
+  } else {
+    joinButtonNav.text('JOIN US!');
+    joinButtonMobile.text('JOIN US!');
+  }
+});
 
-    /* Change nav button text*/
-    var joinButtonNav = $('.header-display-desktop a[href="https://www.meetup.com/tokyovegan/"]');
-    var joinButtonMobile = $('.header-menu-cta a[href="https://www.meetup.com/tokyovegan/"]');
-
-    if (lang === 'jp') {
-      joinButtonNav.text('参加する');
-      joinButtonMobile.text('参加する');
-    } else {
-      joinButtonNav.text('JOIN US!');
-      joinButtonMobile.text('JOIN US!');
-    }
-  });
 </script>
