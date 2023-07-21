@@ -74,6 +74,11 @@ var switcherText = lang === 'en' ? 'JP' : 'EN';
     paragraphBlock.html('<strong>Website provided by </strong><a href="https://veganhacktivists.org"><strong>Vegan Hacktivists</strong></a><strong></strong>');
   }
 
+  /* SETUP LANGUAGE SPECIFIC TEXT - Change "Read more" links to Japanese */
+  if (lang === 'jp') {
+    $('a:contains("Read More")').text('もっと読む');
+  }
+
 });
 
 </script>
