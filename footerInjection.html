@@ -69,9 +69,11 @@
   const paragraphBlock = $('.fe-block-7fd8001534a6ebaccc48 p');
 
   if (lang === 'en') {
-    footerLinks.eq(0).text('Vegan 101').attr('href', '/en/about-vegan');
-    footerLinks.eq(1).text('Resources').attr('href', '/en/resources');
-    footerLinks.eq(2).text('Events').attr('href', '/en/events');
+    footerLinks.eq(0).attr('href', '/en/home');
+    footerLinks.eq(1).text('Vegan 101').attr('href', '/en/about-vegan');
+    footerLinks.eq(2).text('Resources').attr('href', '/en/resources');
+    footerLinks.eq(3).text('Blog').attr('href', '/en/blog');
+    footerLinks.eq(4).text('Events').attr('href', '/en/events');
     paragraphBlock.html('<strong>Website provided by </strong><a href="https://veganhacktivists.org"><strong>Vegan Hacktivists</strong></a><strong></strong>');
   }
 
