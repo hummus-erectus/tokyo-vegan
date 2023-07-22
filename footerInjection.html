@@ -1,47 +1,48 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     $(function() {
-    /* SETUP MULTI-LANGUAGE */
-    var defaultLanguage = 'jp';
-    var lang = location.pathname.split("/")[1];
-    var defaultClass = 'lang-'+defaultLanguage+'';
-    var itemParent = "nav [class*='collection'],nav [class*='folder'],nav [class*='index'],nav [class*='group']";
-    if (lang == "" || lang.length > 2 ){
-      var lang = defaultLanguage;
-    }
+  /* SETUP MULTI-LANGUAGE */
+  const defaultLanguage = 'jp';
+  let lang = location.pathname.split("/")[1];
+  const defaultClass = 'lang-' + defaultLanguage;
+  const itemParent = "nav [class*='collection'],nav [class*='folder'],nav [class*='index'],nav [class*='group']";
+  if (lang === "" || lang.length > 2) {
+    lang = defaultLanguage;
+  }
 
-    /* ADD LANGUAGE CLASSES */
-    $('a[href="/"]').addClass('lang-'+defaultLanguage+'').parents(itemParent).addClass('lang-'+defaultLanguage+'');
-    $('nav a:link:not([href^="http://"]):not([href^="https://"])').each(function () {
-      var langType = $(this).attr('href').split("/")[1];
-      var multiLanguageClass = 'multilanguage lang-' + langType + '';
-      if (undefined !== langType && langType.length <= 2)
-        $(this).addClass(multiLanguageClass).parents(itemParent).addClass(multiLanguageClass);
-    });
-    $('nav button').each(function () {
-      var langTypeFolder = $(this).attr('data-controller-folder-toggle').split("/")[0];
-      var multiLanguageClass = 'multilanguage lang-' + langTypeFolder + '';
-      if (undefined !== langTypeFolder && langTypeFolder.length <= 2)
-        $(this).addClass(multiLanguageClass);
-    });
+  /* ADD LANGUAGE CLASSES */
+  $('a[href="/"]').addClass('lang-' + defaultLanguage).parents(itemParent).addClass('lang-' + defaultLanguage);
+  $('nav a:link:not([href^="http://"]):not([href^="https://"])').each(function() {
+    const langType = $(this).attr('href').split("/")[1];
+    const multiLanguageClass = 'multilanguage lang-' + langType;
+    if (undefined !== langType && langType.length <= 2) {
+      $(this).addClass(multiLanguageClass).parents(itemParent).addClass(multiLanguageClass);
+    }
+  });
+  $('nav button').each(function() {
+    const langTypeFolder = $(this).attr('data-controller-folder-toggle').split("/")[0];
+    const multiLanguageClass = 'multilanguage lang-' + langTypeFolder;
+    if (undefined !== langTypeFolder && langTypeFolder.length <= 2) {
+      $(this).addClass(multiLanguageClass);
+    }
+  });
 
   /* HOMEPAGE-LOGO LINKS TO PROPER LANGUAGE HOMEPAGE */
-  if (lang == "en") {
+  if (lang === "en") {
     $('a[href="/"]').attr("href", "/en/home/");
   }
 
   /* ADD EXCLUSION NAV ITEMS */
-  $('.exclude-me,.exclude-me a').addClass('exclude');
-  $('.sqs-svg-icon--list a,.SocialLinks-link,.header-menu-controls-control').addClass('exclude');
+  $('.exclude-me, .exclude-me a').addClass('exclude');
+  $('.sqs-svg-icon--list a, .SocialLinks-link, .header-menu-controls-control').addClass('exclude');
 
   /* REMOVE OTHER LANGUAGES AND KEEP EXCLUDED ITEMS */
-  $('.multilanguage:not(".lang-'+lang+',.exclude")').remove();
+  $('.multilanguage:not(".lang-' + lang + ',.exclude")').remove();
 
   /* Setup language switcher */
-
-  var currentURL = window.location.pathname;
-  var switcherText = lang === 'en' ? 'JP' : 'EN';
-  var switcherHref = currentURL.replace('/' + lang + '/', '/' + switcherText.toLowerCase() + '/');
+  const currentURL = window.location.pathname;
+  const switcherText = lang === 'en' ? 'JP' : 'EN';
+  let switcherHref = currentURL.replace('/' + lang + '/', '/' + switcherText.toLowerCase() + '/');
 
   // Special case for the base URL
   if (lang === 'jp' && currentURL === '/') {
@@ -52,8 +53,8 @@
   $('.header-menu-nav-folder-content').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
 
   /* Change nav button text*/
-  var joinButtonNav = $('.header-display-desktop a[href="https://www.meetup.com/tokyovegan/"]');
-  var joinButtonMobile = $('.header-menu-cta a[href="https://www.meetup.com/tokyovegan/"]');
+  const joinButtonNav = $('.header-display-desktop a[href="https://www.meetup.com/tokyovegan/"]');
+  const joinButtonMobile = $('.header-menu-cta a[href="https://www.meetup.com/tokyovegan/"]');
 
   if (lang === 'jp') {
     joinButtonNav.text('参加する');
@@ -64,8 +65,8 @@
   }
 
   /* SETUP LANGUAGE SPECIFIC TEXT - Footer */
-  var footerLinks = $('.fe-block-1bbfeac9ba59f8c84c15 a');
-  var paragraphBlock = $('.fe-block-7fd8001534a6ebaccc48 p');
+  const footerLinks = $('.fe-block-1bbfeac9ba59f8c84c15 a');
+  const paragraphBlock = $('.fe-block-7fd8001534a6ebaccc48 p');
 
   if (lang === 'en') {
     footerLinks.eq(0).text('Vegan 101').attr('href', '/en/about-vegan');
@@ -78,7 +79,6 @@
   if (lang === 'jp') {
     $('a:contains("Read More")').text('もっと読む');
   }
-
 });
 
 </script>
