@@ -38,17 +38,17 @@
   $('.multilanguage:not(".lang-'+lang+',.exclude")').remove();
 
   /* Setup language switcher */
-  /*var switcherText = lang === 'en' ? 'JP' : 'EN';
+
   var currentURL = window.location.pathname;
+  var switcherText = lang === 'en' ? 'JP' : 'EN';
   var switcherHref = currentURL.replace('/' + lang + '/', '/' + switcherText.toLowerCase() + '/');
 
-  $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
-});*/
-var switcherText = lang === 'en' ? 'JP' : 'EN';
-  var switcherHref = lang === 'en' ? '/jp/home' : '/en/home/';
+  // Special case for the base URL
+  if (lang === 'jp' && currentURL === '/') {
+    switcherHref = '/en/home';
+  }
 
   $('.header-display-desktop').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
-
   $('.header-menu-nav-folder-content').append('<div class="language"><a href="' + switcherHref + '" class="lang-' + switcherText.toLowerCase() + '">' + switcherText + '</a></div>');
 
   /* Change nav button text*/
